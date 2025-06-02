@@ -1,0 +1,68 @@
+{
+  "colors": {
+    "window": {
+      "activeTitle":   { "value": "#2C3F16", "comment": "Cal Poly Green → Active title bar" },
+      "inactiveTitle": { "value": "#64813A", "comment": "Avocado → Inactive title bar" }
+    },
+    "bevel": {
+      "light": { "value": "#B37FDC", "comment": "Lavender Floral → Top/left bevel edge (raised controls)" },
+      "dark":  { "value": "#EB5C2E", "comment": "Flame → Bottom/right bevel edge (sunken controls)" }
+    },
+    "selection": {
+      "bg":   { "value": "#F97E2E", "comment": "Pumpkin → Active selection highlight" },
+      "text": { "value": "#000000", "comment": "Black → Text on selected items" }
+    },
+    "text": {
+      "primary":   { "value": "#000000", "comment": "Black → Main UI text" },
+      "disabled":  { "value": "#7F7F7F", "comment": "Mid-gray → Disabled/unavailable text" }
+    },
+    "border": {
+      "solid":  { "value": "#7F7F7F", "comment": "Mid-gray → 1px separators/borders" },
+      "darker": { "value": "#000000", "comment": "Black → Window outline/shadow" }
+    },
+    "bg": {
+      "window":    { "value": "#C0C0C0", "comment": "Classic light gray → Window body background" },
+      "dialog":    { "value": "#D3D3D3", "comment": "Slightly lighter gray → Dialog background" },
+      "menu":      { "value": "#E0E0E0", "comment": "Very light gray → Menu/toolbar background" },
+      "scrollbar": { "value": "#D3D3D3", "comment": "Light gray → Scrollbar track background" },
+      "page":      { "value": "#F9FAFB", "comment": "Very light gray → Page background" }
+    },
+    "button": {
+      "bg":         { "value": "#C0C0C0", "comment": "Light gray → Button face (raised)" },
+      "bg-pressed": { "value": "#D3D3D3", "comment": "Slightly darker gray → Button face (sunken)" }
+    }
+  },
+  "spacing": {
+    "xs": { "value": "4px",  "comment": "Base grid unit" },
+    "sm": { "value": "8px",  "comment": "Standard inset" },
+    "md": { "value": "16px", "comment": "Larger padding" }
+  },
+  "radius": {
+    "none": { "value": "0", "comment": "Windows 98 uses sharp corners" }
+  },
+  "font": {
+    "family": {
+      "base":      { "value": "Tahoma, \"MS Sans Serif\", Arial, sans-serif" },
+      "monospace": { "value": "Courier New, Courier, monospace" }
+    },
+    "size": {
+      "xs": { "value": "10px", "comment": "Dialog labels / tiny captions" },
+      "sm": { "value": "12px", "comment": "Standard UI text" },
+      "md": { "value": "14px", "comment": "Slightly larger text if needed" }
+    },
+    "weight": {
+      "normal": { "value": "400" },
+      "bold":   { "value": "700" }
+    },
+    "lineHeight": {
+      "tight":   { "value": "1.2" },
+      "default": { "value": "1.5" }
+    }
+  },
+  "shadow": {
+    "light": { 
+      "value": "2px 2px 0 var(--color-border-darker)", 
+      "comment": "Hard Windows 98–style drop shadow" 
+    }
+  }
+}
