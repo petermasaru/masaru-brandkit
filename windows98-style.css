@@ -1,48 +1,47 @@
 /* ===========================================================================
-   PART 1: GENERATED CSS VARIABLES (copy/paste or auto‐generate from brand-tokens.json)
+   PART 1: GENERATED CSS VARIABLES
    ----------------------------------------------------------------------------
-   All hex values come from brand-tokens.json and have been chosen to meet
-   WCAG contrast ratios ≥ 4.5:1 for normal text where possible.
+   All hex values come from brand-tokens.json.
    =========================================================================== */
 :root {
   /* Window Title Bars */
-  --color-window-activeTitle:   #2C3F16;   /* Cal Poly Green  */
-  --color-window-inactiveTitle: #64813A;   /* Avocado  */
+  --color-window-activeTitle:   #2C3F16;   /* Cal Poly Green */
+  --color-window-inactiveTitle: #64813A;   /* Avocado */
 
-  /* Bevel Edges for 3D Controls */
-  --color-bevel-light:          #B37FDC;   /* Lavender Floral  */
-  --color-bevel-dark:           #EB5C2E;   /* Flame  */
+  /* Bevel Colors (preserved for potential accents, but not used for borders) */
+  --color-bevel-light:          #B37FDC;   /* Lavender Floral */
+  --color-bevel-dark:           #EB5C2E;   /* Flame */
 
   /* Selection Highlight (Pumpkin) */
-  --color-selection-bg:         #F97E2E;   /* Pumpkin  */
-  --color-selection-text:       #000000;   /* Black on Pumpkin → 8.05:1 contrast  */
+  --color-selection-bg:         #F97E2E;   /* Pumpkin */
+  --color-selection-text:       #000000;   /* Black on Pumpkin → 8.05:1 contrast */
 
   /* Text Colors */
-  --color-text-primary:         #000000;   /* Always black text for readability  */
-  --color-text-disabled:        #7F7F7F;   /* Mid-gray for disabled (standard practice)  */
+  --color-text-primary:         #000000;   /* Always black text for readability */
+  --color-text-disabled:        #7F7F7F;   /* Mid-gray for disabled text */
 
   /* Borders & Shadow */
-  --color-border-solid:         #7F7F7F;   /* Mid-gray  */
-  --color-border-darker:        #000000;   /* Black for hard outline/shadow  */
+  --color-border-solid:         #7F7F7F;   /* Mid-gray → Single-color border everywhere */
+  --color-border-darker:        #000000;   /* Black → Window outline/shadow (unchanged) */
   --shadow-light:               2px 2px 0 var(--color-border-darker);
 
   /* Window & UI Backgrounds */
-  --color-bg-window-body:       #C0C0C0;   /* Classic light gray  */
-  --color-bg-dialog:            #D3D3D3;   /* Slightly lighter gray  */
-  --color-bg-menu:              #E0E0E0;   /* Very light gray for menus/toolbar  */
-  --color-bg-scrollbar:         #D3D3D3;   /* Light gray for scrollbar track  */
-  --color-bg-page:              #F9FAFB;   /* Very light gray page background  */
+  --color-bg-window-body:       #C0C0C0;   /* Classic light gray */
+  --color-bg-dialog:            #D3D3D3;   /* Slightly lighter gray */
+  --color-bg-menu:              #E0E0E0;   /* Very light gray for menus/toolbars */
+  --color-bg-scrollbar:         #D3D3D3;   /* Light gray for scrollbar tracks */
+  --color-bg-page:              #F9FAFB;   /* Very light gray page background */
 
   /* Button Faces */
-  --color-bg-button:            #C0C0C0;   /* Button face (raised)  */
-  --color-bg-button-pressed:    #D3D3D3;   /* Button face (sunken)  */
+  --color-bg-button:            #C0C0C0;   /* Light gray → Button face */
+  --color-bg-button-pressed:    #D3D3D3;   /* Slightly darker gray → Button pressed */
 }
 
 /* ===========================================================================
    PART 2: GLOBAL TYPOGRAPHY & PAGE BACKGROUND
    ----------------------------------------------------------------------------
    Use Tahoma (or MS Sans Serif) at 12px to mimic Win98. Black text on light
-   gray backgrounds → high contrast, low cognitive load.
+   gray backgrounds yields high contrast (≥ 8:1).
    =========================================================================== */
 body,
 input, button, select, textarea {
@@ -58,16 +57,16 @@ input, button, select, textarea {
 /* ===========================================================================
    PART 3: WINDOW / DIALOG CONTAINERS
    ----------------------------------------------------------------------------
-   “.window” = classic Win98 frame + titlebar. The title text in “active” windows
-   is white on Cal Poly Green (11.48:1 contrast); in “inactive” windows it is
-   black on Avocado (4.74:1 contrast), meeting WCAG 4.5:1.
+   “.window” = classic Win98 frame + titlebar. Title text in “active” is white on
+   Cal Poly Green (11.48:1); in “inactive” it’s black on Avocado (4.74:1).
+   Borders now use a single dark-gray line (7F7F7F).
    =========================================================================== */
 .window {
   position: relative;
-  width: 400px;                 /* adjust as needed */
+  width: 400px;                     /* adjust as needed */
   border: 2px solid var(--color-border-solid);
   background-color: var(--color-bg-window-body);
-  box-shadow: var(--shadow-light); /* Hard drop shadow → sense of “lift” */
+  box-shadow: var(--shadow-light);  /* Hard drop shadow → sense of “lift” */
   margin: 16px;
 }
 
@@ -89,29 +88,31 @@ input, button, select, textarea {
 
 .window .window-titlebar .window-title {
   font-family: Tahoma, "MS Sans Serif", sans-serif;
-  font-size: 12px; 
+  font-size: 12px;
   font-weight: bold;
-  /* Active window → white text on Cal Poly Green → 11.48:1 (excellent) */
-  /* Inactive window → override to black text on Avocado → 4.74:1 (WCAG minimum) */
+  /* Active: white on Cal Poly Green → 11.48:1 contrast */
+  /* Inactive: black on Avocado → 4.74:1 contrast (just passes WCAG 4.5:1) */
   color: var(--color-text-primary);
   line-height: 16px;
 }
 
+.window .window-body {
+  padding: 8px;                    /* Classic inset */
+  background-color: var(--color-bg-window-body);
+}
+
 /* ===========================================================================
-   PART 4: CLASSIC BEVELED BUTTON
+   PART 4: BUTTONS WITH SINGLE-COLOR BORDER
    ----------------------------------------------------------------------------
-   Two-pixel “3D” bevel: top/left = light (Lavender Floral), bottom/right = dark
-   (Flame). Button text is black → always ≥ 8:1 contrast on any light/dark background.
+   All edges: var(--color-border-solid) (#7F7F7F). Text remains black on light-gray.
    =========================================================================== */
 button {
   background-color: var(--color-bg-button);
-  border: 2px solid var(--color-bevel-dark);
-  border-top-color: var(--color-bevel-light);
-  border-left-color: var(--color-bevel-light);
+  border: 2px solid var(--color-border-solid);
   padding: 2px 8px;
   font-family: Tahoma, "MS Sans Serif", sans-serif;
   font-size: 12px;
-  color: var(--color-text-primary); /* Black-on-light-gray → high contrast */
+  color: var(--color-text-primary);
   line-height: 1.2;
   cursor: default;
   margin: 4px 0;
@@ -119,56 +120,48 @@ button {
 }
 
 button:hover {
-  /* Invert bevel on hover → subtle affordance, still black text */
-  border: 2px solid var(--color-bevel-light);
-  border-top-color: var(--color-bevel-dark);
-  border-left-color: var(--color-bevel-dark);
+  /* Slightly darker border on hover to signal interactivity */
+  border-color: var(--color-border-darker);
 }
 
 button:active {
   background-color: var(--color-bg-button-pressed);
-  border: 2px solid var(--color-bevel-light);
-  border-top-color: var(--color-bevel-dark);
-  border-left-color: var(--color-bevel-dark);
+  border-color: var(--color-border-darker);
 }
 
 /* ===========================================================================
-   PART 5: TEXT INPUTS & TEXTAREAS
+   PART 5: TEXT INPUTS & TEXTAREAS WITH SINGLE-COLOR BORDER
    ----------------------------------------------------------------------------
-   Sunken bevel by default; invert on focus. Black text on white input fields → high contrast.
+   All edges use var(--color-border-solid). Focus → border-color darkens.
    =========================================================================== */
 input[type="text"], textarea {
-  background-color: #FFFFFF;       /* White for typing area → max legibility */
-  border: 2px solid var(--color-bevel-dark);
-  border-top-color: var(--color-bevel-light);
-  border-left-color: var(--color-bevel-light);
+  background-color: #FFFFFF;            /* White for typing → max legibility */
+  border: 2px solid var(--color-border-solid);
   padding: 2px 4px;
   font-family: Tahoma, "MS Sans Serif", sans-serif;
   font-size: 12px;
   color: var(--color-text-primary);
-  width: 200px;                     /* example width, adjust as needed */
+  width: 200px;                          /* example width */
   box-sizing: border-box;
 }
 
 input[type="text"]:focus, textarea:focus {
-  /* Sunken → raised inversion gives clear focus cue (behavioral affordance) */
+  /* Darken border on focus to provide clear affordance */
   outline: none;
-  border: 2px solid var(--color-bevel-light);
-  border-top-color: var(--color-bevel-dark);
-  border-left-color: var(--color-bevel-dark);
+  border-color: var(--color-border-darker);
 }
 
 input[type="text"]:disabled, textarea:disabled {
   background-color: var(--color-bg-window-body);
   border: 1px solid var(--color-border-solid);
   color: var(--color-text-disabled);
-  /* Gray‐on-gray signals “disabled,” reflecting learned UI patterns. */
+  /* Gray-on-gray → conventional “disabled” look. */
 }
 
 /* ===========================================================================
-   PART 6: CHECKBOXES & RADIO BUTTONS
+   PART 6: CHECKBOXES & RADIO BUTTONS WITH SINGLE-COLOR BORDER
    ----------------------------------------------------------------------------
-   Hidden native input + CSS “fake” box/circle. Use black for checkmark → ≥ 8:1.
+   All edges use var(--color-border-solid). Black check/dot → high contrast.
    =========================================================================== */
 .checkbox-wrapper, .radio-wrapper {
   display: inline-flex;
@@ -188,9 +181,7 @@ input[type="text"]:disabled, textarea:disabled {
   width: 12px;
   height: 12px;
   background-color: var(--color-bg-button);
-  border: 2px solid var(--color-bevel-dark);
-  border-top-color: var(--color-bevel-light);
-  border-left-color: var(--color-bevel-light);
+  border: 2px solid var(--color-border-solid);
   display: inline-block;
   position: relative;
 }
@@ -202,7 +193,7 @@ input[type="text"]:disabled, textarea:disabled {
   left: 2px;
   width: 6px;
   height: 6px;
-  background-color: var(--color-text-primary); /* Black check → high contrast on pale background */
+  background-color: var(--color-text-primary); /* Black check → high contrast */
 }
 
 .radio-wrapper input[type="radio"]:checked + .radio-circle::after {
@@ -223,9 +214,9 @@ input[type="text"]:disabled, textarea:disabled {
 }
 
 /* ===========================================================================
-   PART 7: SCROLLBARS (WEBKIT & FIREFOX)
+   PART 7: SCROLLBARS (WebKit & Firefox)
    ----------------------------------------------------------------------------
-   Thick beveled thumb & track. Black text on light track for readability when needed.
+   Thumb border uses var(--color-border-solid). Contrast preserved for thumb.
    =========================================================================== */
 ::-webkit-scrollbar {
   width: 16px;
@@ -238,16 +229,12 @@ input[type="text"]:disabled, textarea:disabled {
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-bg-button);
-  border: 2px solid var(--color-bevel-dark);
-  border-top-color: var(--color-bevel-light);
-  border-left-color: var(--color-bevel-light);
+  border: 2px solid var(--color-border-solid);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-bg-button-pressed);
-  border: 2px solid var(--color-bevel-light);
-  border-top-color: var(--color-bevel-dark);
-  border-left-color: var(--color-bevel-dark);
+  border: 2px solid var(--color-border-darker);
 }
 
 * {
@@ -256,11 +243,10 @@ input[type="text"]:disabled, textarea:disabled {
 }
 
 /* ===========================================================================
-   PART 8: MENU & TOOLBAR
+   PART 8: MENU & TOOLBAR WITH SINGLE-COLOR BORDER ON DROPDOWNS
    ----------------------------------------------------------------------------
-   Black text on light gray (E0E0E0) → minimal eye strain. On hover, background turns
-   Cal Poly Green with white text (11.48:1 contrast → high readability). Consistent
-   with Windows 98 affordances: hover → highlighted.
+   Black text on light gray menu bar → 9.6:1 contrast. On hover, white on
+   Cal Poly Green → 11.48:1. Dropdown border uses var(--color-border-solid).
    =========================================================================== */
 .menu-bar {
   display: flex;
@@ -280,7 +266,7 @@ input[type="text"]:disabled, textarea:disabled {
 
 .menu-item:hover {
   background-color: var(--color-window-activeTitle); /* Cal Poly Green */
-  color: #FFFFFF; /* White on Cal Poly Green → 11.48:1 */
+  color: #FFFFFF; /* White on Cal Poly Green → 11.48:1 contrast */
 }
 
 .submenu, .context-menu {
@@ -303,7 +289,7 @@ input[type="text"]:disabled, textarea:disabled {
   width: 160px;       /* Typical dropdown width */
   padding: 2px 8px;
   font-size: 12px;
-  color: var(--color-text-primary); /* Black on #C0C0C0 → 8.9:1 */
+  color: var(--color-text-primary); /* Black on #C0C0C0 → 8.9:1 contrast */
   white-space: nowrap;
 }
 
@@ -315,8 +301,7 @@ input[type="text"]:disabled, textarea:disabled {
 /* ===========================================================================
    PART 9: SELECTED / FOCUSED ITEMS
    ----------------------------------------------------------------------------
-   “.selected” → Pumpkin #F97E2E background with Black text → 8.05:1 contrast.
-   High visibility, low cognitive load (salience, stops eye from “searching”).
+   “.selected” → Pumpkin (#F97E2E) background with Black text → 8.05:1 contrast.
    =========================================================================== */
 .selected {
   background-color: var(--color-selection-bg);
